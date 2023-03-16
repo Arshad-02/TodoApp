@@ -14,3 +14,11 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+This project is made to get familiar with firebase services. 
+
+Some of the apps screenshots
+
+
+![image](https://user-images.githubusercontent.com/91333786/225685738-e0b330dc-d4c9-4b85-8598-6eb3c09aad71.png)
+![image](https://user-images.githubusercontent.com/91333786/225685941-0964a6d3-b460-43f4-90d0-c8092633be7c.png)
