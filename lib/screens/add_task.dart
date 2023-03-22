@@ -27,7 +27,8 @@ class _AddTaskState extends State<AddTask> {
         .set({
       'title': titleController.text,
       'description': descriptionController.text,
-      'time': time.toString()
+      'time': time.toString(),
+      'timestamp': time
     });
     Fluttertoast.showToast(msg: 'Task added');
     titleController.clear();
@@ -55,7 +56,7 @@ class _AddTaskState extends State<AddTask> {
               height: 10,
             ),
             SizedBox(
-              height: 240,
+              height: 260,
               width: MediaQuery.of(context).size.width,
               child: TextField(
                 controller: descriptionController,
@@ -63,7 +64,7 @@ class _AddTaskState extends State<AddTask> {
                 expands: true,
                 //keyboardType: TextInputType.multiline,
                 decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
+                    //border: OutlineInputBorder(),
                     filled: true,
                     label: Text('Enter a message')),
               ),

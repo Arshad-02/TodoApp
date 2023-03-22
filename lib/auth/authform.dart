@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class AuthForm extends StatefulWidget {
   const AuthForm({super.key});
@@ -42,7 +43,14 @@ class _AuthFormState extends State<AuthForm> {
             .set({'username': username, 'email': email});
       }
     } catch (err) {
-      print(err);
+      if (err.toString() ==
+          'The password is invalid or the user does not have a password.') {
+        Fluttertoast.showToast(msg: 'incorrect credentials ');
+        debugPrint(err as String?);
+      } else {
+        Fluttertoast.showToast(msg: 'One or more fields are empty');
+        print(err);
+      }
     }
   }
 
@@ -66,6 +74,8 @@ class _AuthFormState extends State<AuthForm> {
                         key: const ValueKey('username'),
                         validator: (value) {
                           if (value == null) {
+                            Fluttertoast.showToast(
+                                msg: 'One or more fields is empty');
                             return 'Username cant be empty';
                           }
                           return null;
@@ -85,7 +95,8 @@ class _AuthFormState extends State<AuthForm> {
                       key: const ValueKey('email'),
                       validator: (value) {
                         if (value == null || !value.contains('@')) {
-                          return 'Enter valid id';
+                          Fluttertoast.showToast(msg: 'Enter valid mail');
+                          return 'Enter valid mail';
                         }
                         return null;
                       },
@@ -105,6 +116,7 @@ class _AuthFormState extends State<AuthForm> {
                       obscureText: false,
                       validator: (value) {
                         if (value == null) {
+                          Fluttertoast.showToast(msg: 'password cant be empty');
                           return 'password cant be empty';
                         }
                         return null;
